@@ -30,6 +30,292 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style type="text/css">
+
+        /*-------------------
+        -----News Styles-----
+        ---------------------*/    
+        .timeline{
+            position:relative;
+            margin-bottom:100px;
+            z-index:1;
+        }
+
+        .timeline:before{
+            display:block;
+            content:"";
+            position:absolute;
+            width:50%;
+            height:100%;
+            left:1px;
+            top:0;
+            border-right:1px solid #5CC9DF;
+            z-index:-1;
+            background-color: #fff;
+        } 
+
+        .timeline:after{
+            display:block;
+            content:"";
+            position:absolute;
+            width:50%;
+            height:100px;
+            left:0px;
+            bottom:-105px;
+            border-right:1px dashed #5CC9DF;
+            z-index:-1;
+        } 
+
+        .timeline .date-title{
+            text-align:center;
+            margin:70px 0 50px;
+        }
+
+        .timeline .date-title span{
+            padding:15px 30px;
+            font-size:21px;
+            font-weight:400;
+            color:#fff;
+            background:#5CC9DF;
+            border-radius:5px;
+        }
+
+        .news-item {
+            padding-bottom:45px;
+        }
+
+        .news-item.right {
+            float:right;
+            margin-top:40px;
+        }
+
+        .news-item .news-content {
+            margin:20px 30px 0 0;
+            position:relative;
+            padding:30px;
+            padding-left:100px;
+            background:#f5f5f5;
+            border-radius:10px;
+            box-shadow:-5px 5px 0 rgba(0,0,0,0.08);
+            -webkit-transition:all .3s ease-out;
+            transition:all .3s ease-out;
+        }
+
+        .news-item:hover .news-content {
+            background:#5CC9DF;
+            color:#fff;
+        }
+
+        .news-item.right .news-content {
+            margin:20px 0 0 30px;
+            box-shadow:5px 5px 0 rgba(0,0,0,0.08);
+        }
+
+        .news-item .news-content:after {
+            display:block;
+            content:"";
+            position:absolute;
+            top:50px;
+            right:-40px;
+            width:0px;
+            height:0px;
+            background:transparent;
+            border:20px solid transparent;
+            border-left:20px solid #f5f5f5;
+            -webkit-transition:border-left-color .3s ease-out;
+            transition:border-left-color .3s ease-out;
+        }
+
+        .news-item.right .news-content:after {
+            position:absolute;
+            left:-40px;
+            right:auto;
+            border-left:20px solid transparent;
+            border-right:20px solid #f5f5f5;
+            -webkit-transition:border-right-color .3s ease-out;
+            transition:border-right-color .3s ease-out;
+        }
+
+        .news-item:hover .news-content:after {
+            border-left-color:#5CC9DF;
+        }
+
+        .news-item.right:hover .news-content:after {
+            border-left-color:transparent;
+            border-right-color:#5CC9DF;
+        }
+
+        .news-item .news-content:before {
+            display:block;
+            content:"";
+            position:absolute;
+            width:20px;
+            height:20px;
+            right:-55px;
+            top:60px;
+            background:#5CC9DF;
+            border:3px solid #fff;
+            border-radius:50%;
+            -webkit-transition:background .3s ease-out;
+            transition:background .3s ease-out;
+        }
+
+        .news-item.right .news-content:before {
+            left:-55px;
+            right:auto;
+        }
+
+        .news-content .date {
+            position:absolute;
+            width:80px;
+            height:80px;
+            left:10px;
+            text-align:center;
+            color:#5CC9DF;
+            -webkit-transition:color .3s ease-out;
+            transition:color .3s ease-out;
+        }
+
+        .news-item:hover .news-content .date {
+            color:#fff;
+        }
+
+        .news-content .date p{
+            margin:0;
+            font-size:48px;
+            font-weight:600;
+            line-height:48px;
+        }
+
+        .news-content .date small{
+            margin:0;
+            font-size:26px;
+            font-weight:300;
+            line-height:24px;
+        }
+
+        .news-content .news-title{
+            font-size:24px;
+            font-weight:300;
+        }
+
+        .news-content p{
+            font-size:16px;
+            line-height:24px;
+            font-weight:300;
+            letter-spacing:0.02em;
+            margin-bottom:10px;
+        }
+
+        .news-content .read-more,
+        .news-content .read-more:hover,
+        .news-content .read-more:active,
+        .news-content .read-more:focus{
+            padding:10px 0;
+            text-decoration:none;
+            font-size:16px;
+            color:#7A7C7F;
+            line-height:24px;
+        }
+
+        .news-item:hover .news-content .read-more,
+        .news-item:hover .news-content .read-more:hover,
+        .news-item:hover .news-content .read-more:active,
+        .news-item:hover .news-content .read-more:focus{
+            color:#fff;
+        }
+
+        .news-content .read-more{
+            -webkit-transition:padding .3s ease-out;
+            transition:padding .3s ease-out;
+        }
+
+        .news-content .read-more:hover {
+            padding-left:7px;
+        }
+
+        .news-content .read-more:after{
+            content:'\f054';
+            padding-left:15px;
+            font-family:'FontAwesome';
+            font-size:21px;
+            line-height:21px;
+            color:#5CC9DF;
+            vertical-align:middle;
+            -webkit-transition:padding .3s ease-out;
+            transition:padding .3s ease-out;
+        }
+
+        .news-content .read-more:hover:after{
+            padding-left:20px;
+        }
+
+        .news-item:hover .news-content .read-more:after{
+            color:#fff;
+        }
+
+        .news-content .news-media{
+            position:absolute;
+            width:80px;
+            bottom:-45px;
+            right:40px;
+            border-radius:8px;
+        }
+
+        .news-content .news-media img{
+            border-radius:8px;
+            transform:scale(1);
+            -webkit-transition:-webkit-transform .3s ease-out;
+            transition:transform .3s ease-out;
+        }
+
+        .news-content .news-media a{
+            display:block;
+            text-decoration:none;
+            background:#fff;
+            border-radius:8px;
+            overflow:hidden;
+            -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
+        }
+
+        .news-content .news-media a:hover img{
+            -webkit-transform:scale(1.3);
+            transform:scale(1.3);
+        }
+
+        .news-content .news-media a:after{
+            content:'\f065';
+            position:absolute;
+            width:100%;
+            top:0;
+            left:0;
+            font-family:FontAwesome;
+            font-size:32px;
+            line-height:80px;
+            text-align:center;
+            color:#5CC9DF;
+            -webkit-transform:scale(0);
+            transform:scale(0);
+            opacity:0;
+            -webkit-transition:all .2s ease-out .1s;
+            transition:all .2s ease-out .1s;
+        }
+
+        .news-content .news-media.video a:after{
+            content:'\f04b';
+        }
+
+        .news-content .news-media a:hover:after{
+            -webkit-transform:scale(1);
+            transform:scale(1);
+            opacity:1;
+        }
+
+        .news-content .news-media.gallery{
+            box-shadow:4px 4px 0 #bbb,8px 8px 0 #ddd;
+        }
+                                                
+    </style>
 
 </head>
 
@@ -87,7 +373,6 @@
             </div>
         </div>
     </header>
-
     <!-- Portfolio Grid Section -->
     <section id="portfolio" class="bg-light-gray">
         <div class="container">
@@ -190,98 +475,107 @@
     <section id="belanja">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Cara Bertransaksi di Web Kami</h2>
-                    <h3 class="section-subheading text-muted">Kepercayaan anda adalah prioritas kami.</h3>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-lg-12">
-                    <ul class="timeline">
-                        <li>
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="public/img/about/1.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>Step 1</h4>
-                                    <h4 class="subheading">Memilih produk yang di inginkan</h4>
+                    <div class="row">
+                        <div class="container bootstrap snippet">
+                            <div class="timeline">
+                                <div class="date-title"> 
+                                    <span>CARA BERTRANSAKSI DI WEB KAMI</span>
                                 </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">
-                                        Silahkan lakukan pemilihan produk.
-                                    </p>
+                                <div class="row">
+                                    <div class="col-sm-6 news-item">
+                                        <div class="news-content">
+                                            <div class="date">
+                                                <small>STEP</small><p>1</p> 
+                                            </div>
+                                            <h2 class="news-title">Memilih produk yang di inginkan</h2>
+<!-- 
+                                            <div class="news-media"> 
+                                                <a class="colorbox cboxElement" href="#"> 
+                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/1/" alt=""> 
+                                                </a>
+                                            </div> -->
+
+                                            <p>Catatlah kode produk beserta quantity pembelian yang anda inginkan.</p> 
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 news-item right">
+                                        <div class="news-content">
+                                            <div class="date">
+                                                <small>STEP</small> <p>2</p>
+                                            </div>
+                                            <h2 class="news-title">Kirim pesan</h2>
+
+                                    <!--         <div class="news-media gallery"> 
+                                                <a class="colorbox cboxElement" href="#"> 
+                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/2/" alt=""> 
+                                                </a>
+                                            </div> -->
+
+                                            <p>Kirimkan daftar kode produk yang ingin di beli beserta jumlah order, melalui menu kirim pesan.</p> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 news-item">
+                                        <div class="news-content">
+                                            <div class="date">
+                                                <small>STEP</small> <p>3</p>
+                                            </div>
+                                            <h2 class="news-title">Pembayaran</h2>
+
+                                         <!--    <div class="news-media gallery"> 
+                                                <a class="colorbox cboxElement" href="#"> 
+                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/2/" alt=""> 
+                                                </a>
+                                            </div> -->
+
+                                            <p>
+                                                Lakukan pembayaran produk beserta ongkos kirim melalui transfer bank.<br />
+                                                Nama Bank : Mandiri<br />
+                                                Atas Nama : CV. Mata Pancing<br />
+                                                No Rekening : 1234567890123456
+                                            </p> 
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 news-item right">
+                                        <div class="news-content">
+                                            <div class="date">
+                                                <small>STEP</small><p>4</p> 
+                                            </div>
+                                            <h2 class="news-title">Konfirmasi pembayaran</h2>
+
+                                         <!--    <div class="news-media"> 
+                                                <a class="colorbox cboxElement" href="#"> 
+                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/1/" alt=""> 
+                                                </a>
+                                            </div> -->
+
+                                            <p>Kirim bukti transfer ke email mata.pancing@gmail.com.</p> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6 news-item">
+                                        <div class="news-content">
+                                            <div class="date">
+                                                <small>STEP</small> <p>5</p>
+                                            </div>
+                                            <h2 class="news-title">Menunggu proses pengiriman</h2>
+
+                                          <!--   <div class="news-media gallery"> 
+                                                <a class="colorbox cboxElement" href="#"> 
+                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/2/" alt=""> 
+                                                </a>
+                                            </div> -->
+
+                                            <p>Setiap konfirmasi transfer, anda akan mendapat nomor resi pengiriman barang melalui email atau melalui handphone.</p> 
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="public/img/about/2.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>Step 2</h4>
-                                    <h4 class="subheading">Kirim pesan</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">
-                                        Kirimkan daftar kode produk yang ingin di beli beserta jumlah order, melalui menu kirim pesan.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="public/img/about/3.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>Step 3</h4>
-                                    <h4 class="subheading">Pembayaran</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">
-                                        Lakukan pembayaran produk beserta ongkos kirim melalui transfer bank.<br />
-                                        Nama Bank : Mandiri<br />
-                                        Atas Nama : CV. Mata Pancing<br />
-                                        No Rekening : 1234567890123456
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="public/img/about/4.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>Step 4</h4>
-                                    <h4 class="subheading">Konfirmasi pembayaran</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">
-                                        Kirim bukti transfer ke email mata.pancing@gmail.com.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="public/img/about/4.jpg" alt="">
-                            </div>
-                            <div class="timeline-panel">
-                                <div class="timeline-heading">
-                                    <h4>Step 5</h4>
-                                    <h4 class="subheading">Menunggu proses pengiriman</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p class="text-muted">
-                                        Setiap konfirmasi transfer, anda akan mendapat nomor resi pengiriman barang melalui email atau melalui handphone.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -343,11 +637,11 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+           <!--  <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -390,7 +684,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="messages/" method="post" novalidate>
+                    <form action="/" method="post" novalidate>
                         <div class="row">
                             {{ csrf_field() }}
                             <div class="col-md-6">
@@ -614,7 +908,6 @@
             </div>
         </div>
     </div>
-
     <!-- jQuery -->
     <script src="public/js/jquery.js"></script>
 
@@ -632,6 +925,33 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="public/js/agency.js"></script>
+
+    @if(Session::has('message')) 
+
+        @if(Session::get('message') == 'success')
+
+            <script type="text/javascript">
+                $(function(){
+                    $('#successModal').modal('show');
+                });
+            </script>
+
+        @endif
+    @endif
+
+    <div id="successModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- dialog body -->
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            Pesan Berhasil di kirim..
+          </div>
+          <!-- dialog buttons -->
+          <div class="modal-footer"><button type="button" class="btn btn-primary">Ok</button></div>
+        </div>
+      </div>
+    </div>
 
 </body>
 

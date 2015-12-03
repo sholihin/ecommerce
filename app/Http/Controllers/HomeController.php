@@ -35,7 +35,7 @@ class HomeController extends Controller
             'messages' => $_POST['message']
         ]);
 
-        return redirect('/');
+        return redirect('/')->with('message', 'success');
     }
 
     /**

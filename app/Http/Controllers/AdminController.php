@@ -19,7 +19,7 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function dashboard()
+    public function index()
     {
         return view('admin.home');
     }

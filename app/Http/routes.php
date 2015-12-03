@@ -12,7 +12,7 @@
 */
 // Index Project
 Route::get('/', 'HomeController@index');
-Route::post('messages', 'HomeController@create');
+Route::post('/', 'HomeController@create');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -21,9 +21,22 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 // Registration routes...
 Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::post('auth/register', [
+	'middleware' => 'auth',
+	'uses' => 'Auth\AuthController@postRegister'
+]);
 
 Route::get('admin/dashboard', [
     'middleware' => 'auth',
-    'uses' => 'AdminController@dashboard'
+    'uses' => 'AdminController@index'
+]);
+
+Route::get('admin/comments', [
+    'middleware' => 'auth',
+    'uses' => 'CommentController@index'
+]);
+
+Route::get('admin/orders', [
+    'middleware' => 'auth',
+    'uses' => 'OrderController@index'
 ]);
