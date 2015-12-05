@@ -31,12 +31,17 @@ Route::get('admin/dashboard', [
     'uses' => 'AdminController@index'
 ]);
 
-Route::get('admin/comments', [
+Route::get('admin/reviews', [
     'middleware' => 'auth',
-    'uses' => 'CommentController@index'
+    'uses' => 'ReviewController@index'
 ]);
 
 Route::get('admin/orders', [
     'middleware' => 'auth',
     'uses' => 'OrderController@index'
+]);
+
+Route::get('admin/charts', [
+    'middleware' => 'auth',
+    'uses' => 'ChartController@index'
 ]);

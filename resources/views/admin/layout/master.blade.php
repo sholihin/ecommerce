@@ -156,10 +156,10 @@
                         <a href="dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="dashboard"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                        <a href="charts"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
                     </li>
                     <li>
-                        <a href="comments"><i class="fa fa-fw fa-comments"></i> Comments</a>
+                        <a href="reviews"><i class="fa fa-fw fa-comments"></i> Reviews</a>
                     </li>
                     <li>
                         <a href="orders"><i class="fa fa-fw fa-shopping-cart"></i> Orders</a>
@@ -172,6 +172,16 @@
 
         <div id="page-wrapper">
             <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>@yield('title')</h3>
+                    <ol class="breadcrumb">
+                        @yield('breadcrumb')
+                    </ol>
+                </div>
+            </div>
+
             @yield('content')
             </div>
             <!-- /.container-fluid -->
