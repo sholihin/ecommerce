@@ -26,22 +26,9 @@ Route::post('auth/register', [
 	'uses' => 'Auth\AuthController@postRegister'
 ]);
 
-Route::get('admin/dashboard', [
-    'middleware' => 'auth',
-    'uses' => 'AdminController@index'
-]);
-
-Route::get('admin/reviews', [
-    'middleware' => 'auth',
-    'uses' => 'ReviewController@index'
-]);
-
-Route::get('admin/orders', [
-    'middleware' => 'auth',
-    'uses' => 'OrderController@index'
-]);
-
-Route::get('admin/charts', [
-    'middleware' => 'auth',
-    'uses' => 'ChartController@index'
-]);
+// Kalo pake ini harus pake model show dan input datanya (OOP)
+Route::resource('admin/dashboard', 'AdminController');
+Route::resource('admin/status', 'StatusController');
+Route::resource('admin/orders', 'OrderController');
+Route::resource('admin/charts', 'ChartController');
+Route::resource('admin/product', 'ProductController');

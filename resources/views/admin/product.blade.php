@@ -1,6 +1,6 @@
 @extends('admin.layout.master')
 
-@section('title', 'Orders')
+@section('title', 'Products')
 
 @section('breadcrumb')
 <li>
@@ -9,7 +9,7 @@
     </a>
 </li>
 <li class="active">
-    <i class="fa fa-fw fa-shopping-cart"></i> Orders
+    <i class="fa fa-fw fa-shopping-cart"></i> Products
 </li>
 @endsection
 
@@ -49,7 +49,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($orders as $order)
+                        @foreach($Products as $order)
                             <tr>
                                 <td>{{ $order->invoice }}</td>
                                 <td>{{ $order->total }}</td>
@@ -81,7 +81,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title"><i class="glyphicon glyphicon-plus"></i> Order</h4>
       </div>
-      <form action="orders" method="post">
+      <form action="Products" method="post">
       {{ csrf_field() }}
       <div class="modal-body">
         <div class="form-group">

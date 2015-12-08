@@ -112,18 +112,6 @@
                         <li>
                             <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
                         </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
                         <li class="divider"></li>
                         <li>
                             <a href="#">View All</a>
@@ -144,7 +132,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="/auth/logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -156,13 +144,16 @@
                         <a href="dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                        <a href="charts"><i class="fa fa-fw fa-line-chart"></i> Charts</a>
                     </li>
                     <li>
-                        <a href="reviews"><i class="fa fa-fw fa-comments"></i> Reviews</a>
+                        <a href="status"><i class="fa fa-fw fa-truck"></i> Status</a>
                     </li>
                     <li>
-                        <a href="orders"><i class="fa fa-fw fa-shopping-cart"></i> Orders</a>
+                        <a href="orders"><i class="fa fa-fw fa-usd"></i> Orders</a>
+                    </li>
+                    <li>
+                        <a href="products"><i class="fa fa-fw fa-shopping-cart"></i> Products</a>
                     </li>
                 </ul>
             </div>

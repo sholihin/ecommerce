@@ -3,24 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
+    
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
     public function index()
     {
-        return view('app');
+        $orders = Order::all();
+        return view('admin.order')->withOrders($orders);
     }
 
     /**
@@ -30,15 +33,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-
-        DB::table('messages')->insert([
-            'name' => $_POST['name'], 
-            'email' => $_POST['email'], 
-            'phone' => $_POST['phone'], 
-            'messages' => $_POST['message']
-        ]);
-
-        return redirect('/')->with('message', 'success');
+        //
     }
 
     /**

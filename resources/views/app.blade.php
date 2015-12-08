@@ -345,7 +345,7 @@
                         <a class="page-scroll" href="#services">Services</a>
                     </li> -->
                     <li>
-                        <a class="page-scroll" href="#portfolio">Produk Unggulan</a>
+                        <a class="page-scroll" href="#portfolio">Produk</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#belanja">Cara Belanja</a>
@@ -393,8 +393,8 @@
                         <img src="public/img/portfolio/shimano.jpg" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
-                        <h4>Round Icons</h4>
-                        <p class="text-muted">Graphic Design</p>
+                        <h4>Rp. 700.000</h4>
+                        <p class="text-muted">JOR001</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 portfolio-item">
@@ -407,8 +407,8 @@
                         <img src="public/img/portfolio/lesath.jpg" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
-                        <h4>Startup Framework</h4>
-                        <p class="text-muted">Website Design</p>
+                        <h4>Rp. 400.000</h4>
+                        <p class="text-muted">JOR002</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 portfolio-item">
@@ -421,8 +421,8 @@
                         <img src="public/img/portfolio/scorpion.jpg" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
-                        <h4>Treehouse</h4>
-                        <p class="text-muted">Website Design</p>
+                        <h4>Rp. 900.000</h4>
+                        <p class="text-muted">JOR003</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 portfolio-item">
@@ -435,8 +435,8 @@
                         <img src="public/img/portfolio/poison.jpg" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
-                        <h4>Golden</h4>
-                        <p class="text-muted">Website Design</p>
+                        <h4>Rp. 600.000</h4>
+                        <p class="text-muted">JOR004</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 portfolio-item">
@@ -446,11 +446,11 @@
                                 <i class="fa fa-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="public/img/portfolio/escape.png" class="img-responsive" alt="">
+                        <img src="public/img/portfolio/jaws.jpg" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
-                        <h4>Escape</h4>
-                        <p class="text-muted">Website Design</p>
+                        <h4>Rp. 1.200.000</h4>
+                        <p class="text-muted">JOR005</p>
                     </div>
                 </div>
                 <div class="col-md-4 col-sm-6 portfolio-item">
@@ -460,11 +460,11 @@
                                 <i class="fa fa-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="public/img/portfolio/dreams.png" class="img-responsive" alt="">
+                        <img src="public/img/portfolio/berkley.jpg" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
-                        <h4>Dreams</h4>
-                        <p class="text-muted">Website Design</p>
+                        <h4>Rp. 1.500.000</h4>
+                        <p class="text-muted">JOR006</p>
                     </div>
                 </div>
             </div>

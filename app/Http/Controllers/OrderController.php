@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use DB;
+use App\Order;
+use Validator;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller;
 
 class OrderController extends Controller
 {
@@ -15,9 +15,16 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        return view('admin.order');
+        $orders = Order::all();
+        return view('admin.order')->withOrders($orders);
     }
 
     /**
@@ -38,7 +45,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Order::create($input);
+        $request->session()->flash('flash_message', 'Orders successfully added!');
+        return redirect()->back();
     }
 
     /**
