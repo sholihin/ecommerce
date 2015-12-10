@@ -78,7 +78,6 @@
     </div>
 </div>
 <!-- /.row -->
-
 <div class="modal fade" id="productModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -91,7 +90,7 @@
       <div class="modal-body">
         <div class="form-group">
             <label>Code</label>
-            <input type="text" name="product_code" class="form-control">
+            <input type="text" name="product_code" value="{{ $urutans }}" class="form-control" disabled>
         </div>
         <div class="form-group">
             <label>Name</label>

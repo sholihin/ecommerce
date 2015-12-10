@@ -23,7 +23,25 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        return view('admin.product')->withProducts($products);
+        $productCode = Product::limit(1)->orderBy('product_code', 'decs')->first();
+
+        $crop=substr($productCode->product_code, 4);
+
+        if ($crop==0){
+            $urutan="JOR0001";
+        } elseif ($crop < 9){
+            $plus=$crop+1;
+            $urutan="JOR00".$plus;
+        } elseif ($crop < 99){
+            $plus=$crop+1;
+            $urutan="JOR0".$plus;
+        } elseif ($crop < 999){
+            $plus=$crop+1;
+            $urutan="JOR".$plus;
+        } elseif ($crop >= 999){
+            $urutan="ERROR";
+        }
+        return view('admin.product')->withProducts($products)->withUrutans($urutan);
     }
 
     /**
