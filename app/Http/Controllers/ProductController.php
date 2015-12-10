@@ -45,7 +45,24 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        Product::create($input);
+            
+            // $rules = array(
+            //     'file' => 'image|max:3000',
+            // );
+        
+            // PASS THE INPUT AND RULES INTO THE VALIDATOR
+            // $validation = Validator::make($input, $rules);
+     
+            // CHECK GIVEN DATA IS VALID OR NOT 
+            // if ($validation->fails()) {
+            //     return Redirect::to('/')->with('message', $validation->errors->first());
+            // }
+            
+        $file = $request->file('filename');
+        $file->move(public_path('backend/attachment'), $file->getClientOriginalName());
+
+        $input['filename'] = $file->getClientOriginalName();
+        $save = Product::create($input);    
         $request->session()->flash('flash_message', 'Product successfully added!');
         return redirect()->back();
     }

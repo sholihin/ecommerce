@@ -86,7 +86,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title"><i class="glyphicon glyphicon-plus"></i> Product</h4>
       </div>
-      <form action="products" method="post">
+      <form action="products" method="post" enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="modal-body">
         <div class="form-group">

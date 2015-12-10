@@ -41,7 +41,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function hasRole($role)
     {
-        $roleNames = Auth::user()->role == $role ? true : false;//User::where('role', $role)->first();
+        $roleNames = Auth::user()->role == $role ? true : false;
         return $roleNames;
         
     }
