@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Auth;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -28,12 +29,20 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'phone', 'address', 'password', 'role'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
+
     protected $hidden = ['password', 'remember_token'];
+
+    public function hasRole($role)
+    {
+        $roleNames = Auth::user()->role == $role ? true : false;//User::where('role', $role)->first();
+        return $roleNames;
+        
+    }
 }

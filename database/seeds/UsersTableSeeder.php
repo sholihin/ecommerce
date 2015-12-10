@@ -14,7 +14,10 @@ class UsersTableSeeder extends Seeder
      	DB::table('users')->insert([
             'name' => 'Mohamad Sholihin',
             'email' => 'mohamad.sholihin.it@gmail.com',
+            'phone' => '085718948898',
+            'address' => 'Bojong Gede',
             'password' => bcrypt('admin'),
+            'role' => 'admin',
         ]);
     }
 }

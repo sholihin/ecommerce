@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Order;
 use Validator;
 use App\Http\Requests;
-use Illuminate\Routing\Controller;
+use Illuminate\Routing\Controller as BaseController;
 
 class OrderController extends Controller
 {
@@ -47,7 +47,7 @@ class OrderController extends Controller
     {
         $input = $request->all();
         Order::create($input);
-        $request->session()->flash('flash_message', 'Orders successfully added!');
+        $request->session()->flash('flash_message', 'Order successfully added!');
         return redirect()->back();
     }
 

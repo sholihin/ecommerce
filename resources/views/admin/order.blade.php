@@ -9,7 +9,7 @@
     </a>
 </li>
 <li class="active">
-    <i class="fa fa-fw fa-shopping-cart"></i> Orders
+    <i class="fa fa-fw fa-usd"></i> Orders
 </li>
 @endsection
 
@@ -33,7 +33,7 @@
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Transactions Panel</h3>
+                <h3 class="panel-title"><i class="fa fa-usd fa-fw"></i> Transactions Panel</h3>
             </div>
             <div class="panel-body">
                 <div class="table-responsive">

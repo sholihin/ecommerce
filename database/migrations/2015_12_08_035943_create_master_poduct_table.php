@@ -12,7 +12,7 @@ class CreateMasterPoductTable extends Migration
      */
     public function up()
     {
-        Schema::create('m_product', function (Blueprint $table) {
+        Schema::create('m_products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('product_code');
             $table->string('product_name');
@@ -32,6 +32,6 @@ class CreateMasterPoductTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('m_product');
+        Schema::dropIfExists('m_products');
     }
 }

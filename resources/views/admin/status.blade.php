@@ -9,7 +9,7 @@
     </a>
 </li>
 <li class="active">
-    <i class="fa fa-fw fa-comments"></i> Status
+    <i class="fa fa-fw fa-truck"></i> Status
 </li>
 @endsection
 
@@ -18,7 +18,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Status Panel</h3>
+                <h3 class="panel-title"><i class="fa fa-truck fa-fw"></i> Orders Status</h3>
             </div>
             <div class="panel-body">
                 <div class="table-responsive">

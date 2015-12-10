@@ -29,36 +29,41 @@
 <div class="row">
     <div class="col-md-12">
         <div class="form-group">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModal"><i class="glyphicon glyphicon-plus"></i> Order</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal"><i class="glyphicon glyphicon-plus"></i> Product</button>
         </div>
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Transactions Panel</h3>
+                <h3 class="panel-title"><i class="fa fa-fw fa-shopping-cart"></i></i> Prodcut List</h3>
             </div>
             <div class="panel-body">
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover table-striped">
                         <thead>
                             <tr>
-                                <th>Invoice #</th>
-                                <th>Qty</th>
-                                <th>Total</th>
-                                <th>Order Time</th>
-                                <th>Action</th>
-                                <!-- <th>Amount (Rp)</th> -->
+                                <th>Code #</th>
+                                <th>Name</th>
+                                <th>Purchase Price</th>
+                                <th>Selling Price</th>
+                                <th>Stock</th>
+                                <th style="text-align:center;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($Products as $order)
+                        @foreach($products as $product)
                             <tr>
-                                <td>{{ $order->invoice }}</td>
-                                <td>{{ $order->total }}</td>
-                                <td>{{ $order->created_at }}</td>
-                                <td>
-                                    <div class="button-group">
-                                        <button type="submit" class="btn btn-warning btn-xs">Edit</button>
-                                        <button type="submit" class="btn btn-danger btn-xs">Delete</button>
-                                    </div>
+                                <td>{{ $product->product_code }}</td>
+                                <td>{{ $product->product_name }}</td>
+                                <td>{{ $product->purchase_price }}</td>
+                                <td>{{ $product->selling_price }}</td>
+                                <td>{{ $product->stock }}</td>
+                                <td style="text-align:center;">
+                                    <button type="button" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</button>
+                                    <form action="products/{{ $product->id }}" method="POST" style="display:inline;">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</button>
+                                    </form>
+                                    <button type="button" class="btn btn-default btn-xs"><i class="fa fa-list-ul"></i> Detail</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -74,31 +79,43 @@
 </div>
 <!-- /.row -->
 
-<div class="modal fade" id="orderModal">
+<div class="modal fade" id="productModal">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"><i class="glyphicon glyphicon-plus"></i> Order</h4>
+        <h4 class="modal-title"><i class="glyphicon glyphicon-plus"></i> Product</h4>
       </div>
-      <form action="Products" method="post">
+      <form action="products" method="post">
       {{ csrf_field() }}
       <div class="modal-body">
         <div class="form-group">
             <label>Code</label>
-            <input type="text" name="kode" class="form-control">
+            <input type="text" name="product_code" class="form-control">
         </div>
         <div class="form-group">
-            <label>Customer</label>
-            <input type="text" name="customer" class="form-control">
+            <label>Name</label>
+            <input type="text" name="product_name" class="form-control">
         </div>
         <div class="form-group">
-            <label>Qty</label>
-            <input type="text" name="qty" class="form-control">
+            <label>Purchase</label>
+            <input type="numeric" name="purchase_price" class="form-control">
         </div>
         <div class="form-group">
-            <label>Total</label>
-            <input type="text" name="total" class="form-control">
+            <label>Selling</label>
+            <input type="numeric" name="selling_price" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Display</label>
+            <input type="file" name="filename" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Stock</label>
+            <input type="numeric" name="stock" class="form-control">
         </div>
       </div>
       <div class="modal-footer">

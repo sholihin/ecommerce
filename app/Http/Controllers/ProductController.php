@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Product;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controller as BaseController;
 
 class ProductController extends Controller
 {
@@ -14,7 +14,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -22,8 +22,8 @@ class ProductController extends Controller
 
     public function index()
     {
-        $orders = Order::all();
-        return view('admin.order')->withOrders($orders);
+        $products = Product::all();
+        return view('admin.product')->withProducts($products);
     }
 
     /**
@@ -44,7 +44,10 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = $request->all();
+        Product::create($input);
+        $request->session()->flash('flash_message', 'Product successfully added!');
+        return redirect()->back();
     }
 
     /**
@@ -87,8 +90,12 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        //
+        $products = Product::findOrFail($id);
+        $products->delete();
+
+        $request->session()->flash('flash_message', 'Task successfully deleted!');
+        return redirect()->back();
     }
 }

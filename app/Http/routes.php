@@ -26,9 +26,13 @@ Route::post('auth/register', [
 	'uses' => 'Auth\AuthController@postRegister'
 ]);
 
-// Kalo pake ini harus pake model show dan input datanya (OOP)
-Route::resource('admin/dashboard', 'AdminController');
-Route::resource('admin/status', 'StatusController');
-Route::resource('admin/orders', 'OrderController');
-Route::resource('admin/charts', 'ChartController');
-Route::resource('admin/product', 'ProductController');
+Route::group(['middleware' => 'auth'], function () {
+    // Kalo pake ini harus pake model show dan input datanya (OOP)
+    Route::group(['middleware' => 'role:admin'], function () {
+		Route::resource('admin/dashboard', 'AdminController');
+		Route::resource('admin/status', 'StatusController');
+		Route::resource('admin/orders', 'OrderController');
+		Route::resource('admin/charts', 'ChartController');
+		Route::resource('admin/products', 'ProductController');
+	});
+}); 

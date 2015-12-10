@@ -34,7 +34,7 @@
 
         /*-------------------
         -----News Styles-----
-        ---------------------*/    
+        ---------------------*/
         .timeline{
             position:relative;
             margin-bottom:100px;
@@ -52,7 +52,7 @@
             border-right:1px solid #5CC9DF;
             z-index:-1;
             background-color: #fff;
-        } 
+        }
 
         .timeline:after{
             display:block;
@@ -64,7 +64,7 @@
             bottom:-105px;
             border-right:1px dashed #5CC9DF;
             z-index:-1;
-        } 
+        }
 
         .timeline .date-title{
             text-align:center;
@@ -314,7 +314,7 @@
         .news-content .news-media.gallery{
             box-shadow:4px 4px 0 #bbb,8px 8px 0 #ddd;
         }
-                                                
+
     </style>
 
 </head>
@@ -345,17 +345,35 @@
                         <a class="page-scroll" href="#services">Services</a>
                     </li> -->
                     <li>
-                        <a class="page-scroll" href="#portfolio">Produk</a>
+                        <a class="page-scroll" href="#produk">Produk</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#belanja">Cara Belanja</a>
                     </li>
-                    <li>
-                        <a class="page-scroll" href="#team">Kontak</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Kirim Pesan</a>
-                    </li>
+                    @if(Auth::check())
+                        <li>
+                            <a class="page-scroll" href="#keranjang">Keranjang Belanja</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#team">Kontak</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#profil">Profil</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="/auth/logout">Logout</a>
+                        </li>
+                    @else
+                        <li>
+                            <a class="page-scroll" href="#team">Kontak</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#daftar">Daftar</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="/auth/login">Masuk</a>
+                        </li>
+                    @endif
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -367,14 +385,14 @@
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in">Selamat Datang di Website Kami</div>
-                <div class="intro-heading">Mata Pancing Dot Com</div>
-                <a href="#portfolio" class="page-scroll btn btn-xl">Lihat Produk</a>
+                <div class="intro-lead-in"></div>
+                <div class="intro-heading" style="font-size:50px;text-shadow: 2px 2px 2px #777;">Selamat Datang di Website Kami</div>
+                <a href="#produk" class="page-scroll btn btn-xl"><i class="fa fa-shopping-cart"></i> Lihat Produk</a>
             </div>
         </div>
     </header>
     <!-- Portfolio Grid Section -->
-    <section id="portfolio" class="bg-light-gray">
+    <section id="produk" class="bg-light-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -471,6 +489,60 @@
         </div>
     </section>
 
+    @if(Auth::check())
+    <!-- Start Belanja -->
+    <section id="keranjang">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <h2 class="section-heading" style="margin-bottom:50px;">Keranjang Belanja</h2>
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <td><strong>Kode</strong></td>
+                                <td><strong>Nama</strong></td>
+                                <td><strong>Harga</strong></td>
+                                <td><strong>Jumlah</strong></td>
+                                <td><strong>Aksi</strong></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="15%">br001</td>
+                                <td width="35%">Pepsoden</td>
+                                <td width="20%">Rp. 700.000</td>
+                                <td width="10%">
+                                    <input type="text" value="1" class="form-control">
+                                </td>
+                                <td width="20%">
+                                    <div class="btn-group">
+                                        <button class="btn btn-success">
+                                        <i class="fa fa-refresh"></i>
+                                        </button>
+                                        <button class="btn btn-danger">
+                                        <i class="fa fa-remove"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <td colspan="2"><strong>Total</strong></td>
+                                <td><strong>Rp.700.000</strong></td>
+                                <td colspan="2">
+                                    <button class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Proses</button>
+                                </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Belanja -->
+    @endif
+
     <!-- About Section -->
     <section id="belanja">
         <div class="container">
@@ -479,24 +551,24 @@
                     <div class="row">
                         <div class="container bootstrap snippet">
                             <div class="timeline">
-                                <div class="date-title"> 
+                                <div class="date-title">
                                     <span>CARA BERTRANSAKSI DI WEB KAMI</span>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6 news-item">
                                         <div class="news-content">
                                             <div class="date">
-                                                <small>STEP</small><p>1</p> 
+                                                <small>STEP</small><p>1</p>
                                             </div>
                                             <h2 class="news-title">Memilih produk yang di inginkan</h2>
-<!-- 
-                                            <div class="news-media"> 
-                                                <a class="colorbox cboxElement" href="#"> 
-                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/1/" alt=""> 
+<!--
+                                            <div class="news-media">
+                                                <a class="colorbox cboxElement" href="#">
+                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/1/" alt="">
                                                 </a>
                                             </div> -->
 
-                                            <p>Catatlah kode produk beserta quantity pembelian yang anda inginkan.</p> 
+                                            <p>Catatlah kode produk beserta quantity pembelian yang anda inginkan.</p>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 news-item right">
@@ -506,13 +578,15 @@
                                             </div>
                                             <h2 class="news-title">Kirim pesan</h2>
 
-                                    <!--         <div class="news-media gallery"> 
-                                                <a class="colorbox cboxElement" href="#"> 
-                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/2/" alt=""> 
+                                            <!--
+                                            <div class="news-media gallery">
+                                                <a class="colorbox cboxElement" href="#">
+                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/2/" alt="">
                                                 </a>
-                                            </div> -->
+                                            </div>
+                                            -->
 
-                                            <p>Kirimkan daftar kode produk yang ingin di beli beserta jumlah order, melalui menu kirim pesan.</p> 
+                                            <p>Kirimkan daftar kode produk yang ingin di beli beserta jumlah order, melalui menu kirim pesan.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -524,9 +598,9 @@
                                             </div>
                                             <h2 class="news-title">Pembayaran</h2>
 
-                                         <!--    <div class="news-media gallery"> 
-                                                <a class="colorbox cboxElement" href="#"> 
-                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/2/" alt=""> 
+                                         <!--    <div class="news-media gallery">
+                                                <a class="colorbox cboxElement" href="#">
+                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/2/" alt="">
                                                 </a>
                                             </div> -->
 
@@ -535,23 +609,23 @@
                                                 Nama Bank : Mandiri<br />
                                                 Atas Nama : CV. Mata Pancing<br />
                                                 No Rekening : 1234567890123456
-                                            </p> 
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 news-item right">
                                         <div class="news-content">
                                             <div class="date">
-                                                <small>STEP</small><p>4</p> 
+                                                <small>STEP</small><p>4</p>
                                             </div>
                                             <h2 class="news-title">Konfirmasi pembayaran</h2>
 
-                                         <!--    <div class="news-media"> 
-                                                <a class="colorbox cboxElement" href="#"> 
-                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/1/" alt=""> 
+                                         <!--    <div class="news-media">
+                                                <a class="colorbox cboxElement" href="#">
+                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/1/" alt="">
                                                 </a>
                                             </div> -->
 
-                                            <p>Kirim bukti transfer ke email mata.pancing@gmail.com.</p> 
+                                            <p>Kirim bukti transfer ke email mata.pancing@gmail.com.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -563,13 +637,13 @@
                                             </div>
                                             <h2 class="news-title">Menunggu proses pengiriman</h2>
 
-                                          <!--   <div class="news-media gallery"> 
-                                                <a class="colorbox cboxElement" href="#"> 
-                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/2/" alt=""> 
+                                          <!--   <div class="news-media gallery">
+                                                <a class="colorbox cboxElement" href="#">
+                                                    <img class="img-responsive" src="http://lorempixel.com/400/400/sports/2/" alt="">
                                                 </a>
                                             </div> -->
 
-                                            <p>Setiap konfirmasi transfer, anda akan mendapat nomor resi pengiriman barang melalui email atau melalui handphone.</p> 
+                                            <p>Setiap konfirmasi transfer, anda akan mendapat nomor resi pengiriman barang melalui email atau melalui handphone.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -645,8 +719,56 @@
         </div>
     </section>
 
+    @if(!Auth::check())
+    <!-- Daftar Section -->
+    <section id="daftar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading" style="margin-bottom:80px">Daftar Sekarang</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form action="/" method="post" novalidate>
+                        <div class="row">
+                            {{ csrf_field() }}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" placeholder="Nama *" id="name" required>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" placeholder="Email *" id="email" required>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" name="phone" class="form-control" placeholder="No Telpon *" id="phone" required>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea name="message" class="form-control" placeholder="Alamat *" id="address" required></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="submit" class="btn btn-xl">Kirim</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Daftar -->
+    @endif
+
     <!-- Clients Aside -->
-    <aside class="clients">
+    <aside class="clients" style="border-bottom: 2px solid #5CC9DF;">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6">
@@ -672,52 +794,6 @@
             </div>
         </div>
     </aside>
-    
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Kirim Pesan</h2>
-                    <h3 class="section-subheading text-muted">Pesan yang anda kirimkan akan segera kami tanggapi.</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form action="/" method="post" novalidate>
-                        <div class="row">
-                            {{ csrf_field() }}
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" name="name" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="form-group">
-                                    <input type="tel" name="phone" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <textarea name="message" class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-lg-12 text-center">
-                                <div id="success"></div>
-                                <button type="submit" class="btn btn-xl">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <footer>
         <div class="container">
@@ -926,7 +1002,7 @@
     <!-- Custom Theme JavaScript -->
     <script src="public/js/agency.js"></script>
 
-    @if(Session::has('message')) 
+    @if(Session::has('message'))
 
         @if(Session::get('message') == 'success')
 

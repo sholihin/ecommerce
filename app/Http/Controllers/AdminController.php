@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Http\Controllers\Controller;
+use Auth;
+use Illuminate\Routing\Controller as BaseController;
 
 class AdminController extends Controller
 {
@@ -16,7 +17,7 @@ class AdminController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        //
     }
 
     public function index()

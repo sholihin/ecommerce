@@ -41,10 +41,8 @@ class AuthController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    public function handle()
-    {
-        return redirect()->guest(property_exists(AuthController::class, 'redirectIfMiddlewareBlocks') ? AuthController::redirectIfMiddlewareBlocks : 'admin/dashboard');
-    }
+
+    protected $redirectPath = '/';
 
     protected function validator(array $data)
     {
