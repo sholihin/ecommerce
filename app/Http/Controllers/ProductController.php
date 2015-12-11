@@ -22,6 +22,11 @@ class ProductController extends Controller
 
     public function index()
     {
+        return view('admin.product');
+        // return view('admin.product')->withProducts($products)->withUrutans($urutan);
+    }
+
+    public function products(){
         $products = Product::all();
         $productCode = Product::limit(1)->orderBy('product_code', 'decs')->first();
 
@@ -31,17 +36,21 @@ class ProductController extends Controller
             $urutan="JOR0001";
         } elseif ($crop < 9){
             $plus=$crop+1;
-            $urutan="JOR00".$plus;
+            $urutan="JOR000".$plus;
         } elseif ($crop < 99){
             $plus=$crop+1;
-            $urutan="JOR0".$plus;
+            $urutan="JOR00".$plus;
         } elseif ($crop < 999){
             $plus=$crop+1;
+            $urutan="JOR0".$plus;
+        } elseif ($crop < 9999){
+            $plus=$crop+1;
             $urutan="JOR".$plus;
-        } elseif ($crop >= 999){
+        } elseif ($crop >= 9999){
             $urutan="ERROR";
         }
-        return view('admin.product')->withProducts($products)->withUrutans($urutan);
+
+        return response()->json(array('data' => $products, 'urutan' => $urutan));
     }
 
     /**
@@ -87,13 +96,14 @@ class ProductController extends Controller
 
     /**
      * Display the specified resource.
-     *
+     *P
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        return Product::findOrFail($id);
+        // return view('admin.product')->withProducts($products)->withUrutans($urutan);
     }
 
     /**

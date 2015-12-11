@@ -53,17 +53,17 @@
                             <tr>
                                 <td>{{ $product->product_code }}</td>
                                 <td>{{ $product->product_name }}</td>
-                                <td>{{ $product->purchase_price }}</td>
-                                <td>{{ $product->selling_price }}</td>
+                                <td>Rp. {{ number_format($product->purchase_price) }}</td>
+                                <td>Rp. {{ number_format($product->selling_price) }}</td>
                                 <td>{{ $product->stock }}</td>
                                 <td style="text-align:center;">
-                                    <button type="button" class="btn btn-warning btn-xs"><i class="fa fa-pencil-square-o"></i> Edit</button>
+                                    <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil-square-o"></i> Edit</button>
                                     <form action="products/{{ $product->id }}" method="POST" style="display:inline;">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</button>
                                     </form>
-                                    <button type="button" class="btn btn-default btn-xs"><i class="fa fa-list-ul"></i> Detail</button>
+                                    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#detailModal"><i class="fa fa-list-ul"></i> Detail</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -90,7 +90,7 @@
       <div class="modal-body">
         <div class="form-group">
             <label>Code</label>
-            <input type="text" name="product_code" value="{{ $urutans }}" class="form-control" disabled>
+            <input type="text" name="product_code" value="{{ $urutans }}" class="form-control" readonly>
         </div>
         <div class="form-group">
             <label>Name</label>
@@ -119,7 +119,102 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- /.row -->
+<div class="modal fade" id="detailModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><i class="glyphicon glyphicon-list"></i> Detail Product</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Code</label>
+            <input type="text" name="product_code" value="{{ $product->product_code }}" class="form-control" disabled>
+        </div>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="product_name" value="{{ $product->product_name }}" class="form-control" disabled>
+        </div>
+        <div class="form-group">
+            <label>Purchase</label>
+            <input type="numeric" name="purchase_price" value="{{ $product->purchase_price }}" class="form-control" disabled>
+        </div>
+        <div class="form-group">
+            <label>Selling</label>
+            <input type="numeric" name="selling_price" value="{{ $product->selling_price }}" class="form-control" disabled>
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" class="form-control" disabled> {{ $product->description }}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Display</label>
+            <img class="form-control" src="../backend/attachment/{{ $product->filename }}" style="width:100px;height:auto;">
+        </div>
+        <div class="form-group">
+            <label>Stock</label>
+            <input type="numeric" name="stock" value="{{ $product->stock }}" class="form-control" disabled>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<!-- /.row -->
+<div class="modal fade" id="editModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><i class="glyphicon glyphicon-list"></i> Edit Product</h4>
+      </div>
+      <form action="product/" method="post" enctype="multipart/form-data">
+      <div class="modal-body">
+        <div class="form-group">
+            <label>Code</label>
+            <input type="text" name="product_code" value="{{ $product->product_code }}" class="form-control" disabled>
+        </div>
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="product_name" value="{{ $product->product_name }}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Purchase</label>
+            <input type="numeric" name="purchase_price" value="{{ $product->purchase_price }}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Selling</label>
+            <input type="numeric" name="selling_price" value="{{ $product->selling_price }}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" class="form-control"> {{ $product->description }}</textarea>
+        </div>
+        <div class="form-group">
+            <label>Display</label>
+            <img class="form-control" src="../backend/attachment/{{ $product->filename }}" style="width:100px;height:auto;">
+            <input type="file" name="filename" value="{{ $product->filename }}" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Stock</label>
+            <input type="numeric" name="stock" value="{{ $product->stock }}" class="form-control">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-warning">Save Changes</button>
       </div>
       </form>
     </div><!-- /.modal-content -->

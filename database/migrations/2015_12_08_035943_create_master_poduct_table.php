@@ -16,8 +16,8 @@ class CreateMasterPoductTable extends Migration
             $table->increments('id');
             $table->string('product_code');
             $table->string('product_name');
-            $table->decimal('purchase_price');
-            $table->decimal('selling_price');
+            $table->decimal('purchase_price', 19,2);
+            $table->decimal('selling_price', 19,2);
             $table->text('description');
             $table->text('filename');
             $table->integer('stock');

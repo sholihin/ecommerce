@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="ecommerceApp">
 
 <head>
 
@@ -46,7 +46,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><strong>Portal Admin</strong></a>
+                <a class="navbar-brand" href="/"><strong><i class="fa fa-arrow-circle-left"></i> Back To Front</strong></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -187,6 +187,10 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../protected/js/bootstrap.min.js"></script>
+
+    <!-- Tambahan sendiri -->
+    <script src="../protected/js/angular.min.js"></script>
+    <script src="../protected/js/app.js"></script>
 
     <!-- Morris Charts JavaScript -->
     <script src="../protected/js/plugins/morris/raphael.min.js"></script>

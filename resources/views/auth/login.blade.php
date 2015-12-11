@@ -14,7 +14,7 @@
     <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="modal-header" style="background-color: #2c3e50;color: white;">
-          <h4 class="modal-title"><strong>Login Admin</strong></h4>
+          <h4 class="modal-title"><strong><i class="glyphicon glyphicon-user"></i> Sign In</strong></h4>
         </div>
         {!! csrf_field() !!}
         <div class="modal-body">

@@ -351,6 +351,20 @@
                         <a class="page-scroll" href="#belanja">Cara Belanja</a>
                     </li>
                     @if(Auth::check())
+                        @if(Auth::user()->role == 'admin')
+                        <li>
+                            <a class="page-scroll" href="#team">Kontak</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="/admin/dashboard">Halaman Admin</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="/admin/profil">Profil</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="/auth/logout">Logout</a>
+                        </li>
+                        @else
                         <li>
                             <a class="page-scroll" href="#keranjang">Keranjang Belanja</a>
                         </li>
@@ -363,6 +377,7 @@
                         <li>
                             <a class="page-scroll" href="/auth/logout">Logout</a>
                         </li>
+                        @endif
                     @else
                         <li>
                             <a class="page-scroll" href="#team">Kontak</a>
@@ -401,6 +416,7 @@
                 </div>
             </div>
             <div class="row">
+                @foreach($products as $product)
                 <div class="col-md-4 col-sm-6 portfolio-item">
                     <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
@@ -408,83 +424,14 @@
                                 <i class="fa fa-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img src="public/img/portfolio/shimano.jpg" class="img-responsive" alt="">
+                        <img src="backend/attachment/{{ $product->filename }}" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
-                        <h4>Rp. 700.000</h4>
-                        <p class="text-muted">JOR001</p>
+                        <h4>Rp. {{ number_format($product->selling_price) }}</h4>
+                        <p class="text-muted">{{ $product->product_name }} - {{ $product->product_code }}</p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="public/img/portfolio/lesath.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Rp. 400.000</h4>
-                        <p class="text-muted">JOR002</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="public/img/portfolio/scorpion.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Rp. 900.000</h4>
-                        <p class="text-muted">JOR003</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="public/img/portfolio/poison.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Rp. 600.000</h4>
-                        <p class="text-muted">JOR004</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="public/img/portfolio/jaws.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Rp. 1.200.000</h4>
-                        <p class="text-muted">JOR005</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="public/img/portfolio/berkley.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Rp. 1.500.000</h4>
-                        <p class="text-muted">JOR006</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
