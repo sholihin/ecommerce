@@ -34,6 +34,5 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::resource('admin/orders', 'OrderController');
 		Route::resource('admin/charts', 'ChartController');
 		Route::resource('admin/products', 'ProductController');
-		Route::get('api/products', 'ProductController@products');
 	});
-}); 
+});

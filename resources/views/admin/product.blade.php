@@ -14,6 +14,7 @@
 @endsection
 
 @section('content')
+<div ng-controller="ProductCtrl">
 @if($errors->any())
     <div class="alert alert-danger">
         @foreach($errors->all() as $error)
@@ -57,8 +58,8 @@
                                 <td>Rp. {{ number_format($product->selling_price) }}</td>
                                 <td>{{ $product->stock }}</td>
                                 <td style="text-align:center;">
-                                    <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil-square-o"></i> Edit</button>
-                                    <form action="products/{{ $product->id }}" method="POST" style="display:inline;">
+                                    <a href="/admin/products/{{ $product->id }}/edit"><button type="button" class="btn btn-warning btn-xs edit"><i class="fa fa-pencil-square-o"></i> Edit</button></a>
+                                    <form action="/admin/products/{{ $product->id }}" method="POST" style="display:inline;">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete</button>
@@ -119,7 +120,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
       </form>
     </div><!-- /.modal-content -->
@@ -220,4 +221,6 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+</div><!-- end controller -->
 @endsection

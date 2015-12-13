@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="ecommerceApp">
+<html lang="en">
 
 <head>
 
@@ -12,16 +12,16 @@
     <title>Ecommerce - @yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="../protected/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{asset('protected/css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../protected/css/sb-admin.css" rel="stylesheet">
+    <link href="{{asset('protected/css/sb-admin.css')}}" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="../protected/css/plugins/morris.css" rel="stylesheet">
+    <link href="{{asset('protected/css/plugins/morris.css')}}" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../protected/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{asset('protected/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -141,19 +141,19 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="/admin/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="charts"><i class="fa fa-fw fa-line-chart"></i> Charts</a>
+                        <a href="/admin/charts"><i class="fa fa-fw fa-line-chart"></i> Charts</a>
                     </li>
                     <li>
-                        <a href="status"><i class="fa fa-fw fa-truck"></i> Status</a>
+                        <a href="/admin/status"><i class="fa fa-fw fa-truck"></i> Status</a>
                     </li>
                     <li>
-                        <a href="orders"><i class="fa fa-fw fa-usd"></i> Orders</a>
+                        <a href="/admin/orders"><i class="fa fa-fw fa-usd"></i> Orders</a>
                     </li>
                     <li>
-                        <a href="products"><i class="fa fa-fw fa-shopping-cart"></i> Products</a>
+                        <a href="/admin/products"><i class="fa fa-fw fa-shopping-cart"></i> Products</a>
                     </li>
                 </ul>
             </div>
@@ -183,19 +183,15 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="../protected/js/jquery.js"></script>
+    <script src="{{asset('protected/js/jquery.js')}}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../protected/js/bootstrap.min.js"></script>
-
-    <!-- Tambahan sendiri -->
-    <script src="../protected/js/angular.min.js"></script>
-    <script src="../protected/js/app.js"></script>
+    <script src="{{asset('protected/js/bootstrap.min.js')}}"></script>
 
     <!-- Morris Charts JavaScript -->
-    <script src="../protected/js/plugins/morris/raphael.min.js"></script>
-    <script src="../protected/js/plugins/morris/morris.min.js"></script>
-    <script src="../protected/js/plugins/morris/morris-data.js"></script>
+    <script src="{{asset('protected/js/plugins/morris/raphael.min.js')}}"></script>
+    <script src="{{asset('protected/js/plugins/morris/morris.min.js')}}"></script>
+    <script src="{{asset('protected/js/plugins/morris/morris-data.js')}}"></script>
 
 </body>
 

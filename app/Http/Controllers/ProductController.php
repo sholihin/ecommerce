@@ -22,11 +22,6 @@ class ProductController extends Controller
 
     public function index()
     {
-        return view('admin.product');
-        // return view('admin.product')->withProducts($products)->withUrutans($urutan);
-    }
-
-    public function products(){
         $products = Product::all();
         $productCode = Product::limit(1)->orderBy('product_code', 'decs')->first();
 
@@ -50,7 +45,8 @@ class ProductController extends Controller
             $urutan="ERROR";
         }
 
-        return response()->json(array('data' => $products, 'urutan' => $urutan));
+        // return response()->json(array('data' => $products, 'urutan' => $urutan));
+        return view('admin.product')->withProducts($products)->withUrutans($urutan);
     }
 
     /**
@@ -72,24 +68,24 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-            
+
             // $rules = array(
             //     'file' => 'image|max:3000',
             // );
-        
+
             // PASS THE INPUT AND RULES INTO THE VALIDATOR
             // $validation = Validator::make($input, $rules);
-     
-            // CHECK GIVEN DATA IS VALID OR NOT 
+
+            // CHECK GIVEN DATA IS VALID OR NOT
             // if ($validation->fails()) {
             //     return Redirect::to('/')->with('message', $validation->errors->first());
             // }
-            
+
         $file = $request->file('filename');
         $file->move(public_path('backend/attachment'), $file->getClientOriginalName());
 
         $input['filename'] = $file->getClientOriginalName();
-        $save = Product::create($input);    
+        $save = Product::create($input);
         $request->session()->flash('flash_message', 'Product successfully added!');
         return redirect()->back();
     }
@@ -102,8 +98,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        return Product::findOrFail($id);
-        // return view('admin.product')->withProducts($products)->withUrutans($urutan);
+        //tmp/php0UXW4P
     }
 
     /**
@@ -114,7 +109,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+      $products = Product::findOrFail($id);
+      return view('admin.editProduct')->withProducts($products);
     }
 
     /**
@@ -126,7 +122,21 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $products = Product::findOrFail($id);
+      // $this->validate($request, [
+      //     'title' => 'required',
+      //     'description' => 'required'
+      // ]);
+
+      $input = $request->all();
+      $file = $request->file('filename');
+      $file->move(public_path('backend/attachment'), $file->getClientOriginalName());
+
+      $input['filename'] = $file->getClientOriginalName();
+      $products->fill($input)->save();
+      // Session::flash('flash_message', 'Task successfully update!');
+
+      return redirect()->back();
     }
 
     /**
