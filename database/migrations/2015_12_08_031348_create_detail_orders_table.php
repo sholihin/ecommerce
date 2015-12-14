@@ -11,17 +11,17 @@ class CreateDetailOrdersTable extends Migration
      * @return void
      */
     public function up()
-    {   
+    {
         Schema::create('detail_orders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('invoice_code');
             $table->string('product_code');
-            $table->string('prodcut_name');
+            $table->string('product_name');
             $table->string('customer_id');
-            $table->string('price');
+            $table->decimal('price', 19,2);
             $table->integer('qty');
-            $table->decimal('subtotal');
-            $table->timestamps();   
+            $table->decimal('subtotal', 19,2);
+            $table->timestamps();
         });
 
         // Schema::table('detail_orders', function($table) {

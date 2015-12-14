@@ -24,25 +24,26 @@ class ProductController extends Controller
     {
         $products = Product::all();
         $productCode = Product::limit(1)->orderBy('product_code', 'decs')->first();
+        if(isset($productCode->product_code)){
+          $crop=substr($productCode->product_code, 4);
 
-        $crop=substr($productCode->product_code, 4);
-
-        if ($crop==0){
+          if ($crop < 9){
+              $plus=$crop+1;
+              $urutan="JOR000".$plus;
+          } elseif ($crop < 99){
+              $plus=$crop+1;
+              $urutan="JOR00".$plus;
+          } elseif ($crop < 999){
+              $plus=$crop+1;
+              $urutan="JOR0".$plus;
+          } elseif ($crop < 9999){
+              $plus=$crop+1;
+              $urutan="JOR".$plus;
+          } elseif ($crop >= 9999){
+              $urutan="ERROR";
+          }
+        }else {
             $urutan="JOR0001";
-        } elseif ($crop < 9){
-            $plus=$crop+1;
-            $urutan="JOR000".$plus;
-        } elseif ($crop < 99){
-            $plus=$crop+1;
-            $urutan="JOR00".$plus;
-        } elseif ($crop < 999){
-            $plus=$crop+1;
-            $urutan="JOR0".$plus;
-        } elseif ($crop < 9999){
-            $plus=$crop+1;
-            $urutan="JOR".$plus;
-        } elseif ($crop >= 9999){
-            $urutan="ERROR";
         }
 
         // return response()->json(array('data' => $products, 'urutan' => $urutan));
@@ -134,8 +135,7 @@ class ProductController extends Controller
 
       $input['filename'] = $file->getClientOriginalName();
       $products->fill($input)->save();
-      // Session::flash('flash_message', 'Task successfully update!');
-
+      $request->session()->flash('flash_message', 'Product successfully update!');
       return redirect()->back();
     }
 
@@ -150,7 +150,7 @@ class ProductController extends Controller
         $products = Product::findOrFail($id);
         $products->delete();
 
-        $request->session()->flash('flash_message', 'Task successfully deleted!');
+        $request->session()->flash('flash_message', 'Product successfully deleted!');
         return redirect()->back();
     }
 }

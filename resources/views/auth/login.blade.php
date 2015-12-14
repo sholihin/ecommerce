@@ -36,7 +36,7 @@
         </div>
         <div class="modal-footer">
           <div class="btn-group">
-              <button type="reset" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
+              <a class="btn btn-danger" href="/"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</a>
               <button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-share"></i> Sign In</button>
           </div>
         </div>

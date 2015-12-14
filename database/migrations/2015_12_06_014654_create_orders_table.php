@@ -15,8 +15,8 @@ class CreateOrdersTable extends Migration
         Schema::create('t_orders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('invoice');
-            $table->string('subtotal');
-            $table->timestamps();   
+            $table->decimal('subtotal', 19,2);
+            $table->timestamps();
         });
     }
 

@@ -9,6 +9,6 @@ class Order extends Model
     protected $table = 't_orders';
     protected $fillable = [
     	'invoice',
-    	'total'
+    	'subtotal'
 	];
 }
